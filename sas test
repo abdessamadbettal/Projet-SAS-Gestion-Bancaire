@@ -38,26 +38,11 @@ void plusieurs_compte (){
     for(i=0;i<n;i++)
            printf("\n CIN: %s  Nom: %s Prenom: %s Montant: %d DH",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
 }
-void operations (){
-int choix;
-            printf("1 : Retrait\n");
-            printf("2 : Dépôt");
-            printf("\n entrer votre choix :");
-            scanf("%c",&choix);    
-    switch(choix){
-        case 1 :
-         printf("%d" ,choix);
-        break;
-        case 2 : 
-         printf("%d" ,choix);
-        break;
-        default : ;
-        break;
-       }
-}
+
 int main()
 {
     char c ;
+    int choix;
 printf(">>>>>>>>>>>>>>  Gestion Bancaire  <<<<<<<<<<<<<<<");
 printf("\n A : Introduire un compte bancaire") ;
 printf("\n B : Introduire plusieurs comptes bancaires") ;
@@ -77,9 +62,31 @@ case 'B' : plusieurs_compte () ;
 break;
 case 'b' : plusieurs_compte ();
 break;
-case 'C' : operations () ;
+case 'C' : printf("1 : Retrait");
+           printf("\n2 : Dépôt ");
+           printf("\n entrer votre choix :");
+           scanf("%d",&choix);
+   if (choix==1){
+           printf("Retrait");
+           }
+   else if(choix==2){
+           printf("dépôt");    
+           }
+   else 
+           printf("le caractère entrer est incorrect");   
 break;
-case 'c' : operations () ;
+case 'c' : printf("1 : Retrait");
+           printf("\n2 : Dépôt ");
+           printf("\n entrer votre choix :");
+           scanf("%d",&choix);
+   if (choix==1){
+           printf("Retrait");
+           }
+   else if(choix==2){
+           printf("dépôt");    
+           }
+   else 
+           printf("le caractère entrer est incorrect");
 break;
 case 'D' : ;
 break;
