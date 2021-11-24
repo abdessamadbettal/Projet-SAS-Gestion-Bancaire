@@ -1,0 +1,190 @@
+#include <stdio.h>
+#include <string.h>
+typedef struct {
+    char CIN [10];
+    char Nom[10] ;
+    char Prenom[10] ;
+    int Montant ;
+} Compte ;
+Compte clients[10];
+
+int i;
+void seule_compte(){  
+    printf("veuillez taper votre cin :");
+    scanf("%s",clients[i].CIN); 
+    printf("veuillez taper votre nom :");
+    scanf("%s",clients[i].Nom);
+    printf("veuillez taper votre prenom :");
+    scanf("%s",clients[i].Prenom);
+    printf("veuillez taper votre montant :");
+    scanf("%d",&clients[i].Montant);
+    printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+    i++;
+}
+void multible_compte (){
+    int n,j;
+    printf("entrer le nombre de compte que vous voulez creer :");
+    scanf("%d",&n);
+    for(j=0;j<n;j++){
+        seule_compte();
+    }
+}
+void depot(){
+    char cin[10];
+    int i , j, mtn;
+    printf("\n entrer votre cin :");
+    scanf("%s",cin);
+    printf("\n entrer le montant a deposer :");
+    scanf("%d",&mtn);
+
+    for( i=0;i<10;i++)
+    {
+        if(strcmp(clients[i].CIN,cin)==0){
+            clients[i].Montant = clients[i].Montant + mtn;
+        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+        break;
+        }
+    }
+
+}
+
+void retrait(){
+    char cin[10];
+    int z, montant;
+    printf("\n entrer votre cin :");
+    scanf("%s",cin);
+    printf("\n entrer le montant a retrait :");
+    scanf("%d",&montant);
+
+    for( z=0;z<10;z++)
+    {
+        if(strcmp(clients[z].CIN,cin)==0){
+            clients[z].Montant = clients[z].Montant - montant;
+        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[z].CIN,clients[z].Nom,clients[z].Prenom,clients[z].Montant);
+        break;
+        }
+    }
+
+}
+
+void    ascendant()
+{
+    int k,j,i;
+    Compte  c;
+    for(k=0;k<9;k++)
+    {
+        for(j=k+1;j<10;j++)
+        {
+            if ( clients[k].Montant > clients[j].Montant ) {
+                c = clients[k];
+                clients[k] = clients[j];
+                clients[j] = c;
+            }
+        }
+    }
+    j=0;
+    for(i=0;i<10;i++)
+    {
+        if(clients[i].CIN[0] == 0 && clients[i + 1].CIN[0] == 0)
+            i++;
+        else if (clients[i].CIN[0])
+            printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+    }
+}
+
+void    descendant()
+{
+    int k,j ,i;
+    Compte  c;
+    for(k=0;k<9;k++)
+    {
+        for(j=k+1;j<10;j++)
+        {
+            if ( clients[k].Montant < clients[j].Montant ) {
+                c = clients[k];
+                clients[k] = clients[j];
+                clients[j] = c;
+            }
+        }
+    }
+    j=0;
+    for(i=0;i<10;i++)
+    {
+        if(clients[i].CIN[0] == 0 && clients[i + 1].CIN[0] == 0)
+            i++;
+        else if (clients[i].CIN[0])
+            printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+    }
+}
+
+void search()
+{
+    int i ;
+    char cin[10];
+    printf("donne cin ");
+    scanf("%s",cin);
+    for( i=0;i<10;i++)
+    {
+        if(strcmp(clients[i].CIN,cin)==0){
+            printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+            break;
+        }
+    }
+}
+
+int main()
+{
+
+    int menu ;
+    int choix;
+    int choisir;
+    do{
+printf("\n ~~~~~~~~~~~~~~ Gestion Bancaire ~~~~~~~~~~~~~~");
+printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+printf("\n 1 ~~~~~~~~ Introduire un compte bancaire") ;
+printf("\n 2 ~~~~~~~~ Introduire plusieurs comptes bancaires") ;
+printf("\n 3 ~~~~~~~~ Opérations (Retrait ; Dépôt)") ;
+printf("\n 4 ~~~~~~~~ Affichage") ;
+printf("\n 5 ~~~~~~~~ Quitter ") ;
+ 
+printf("\n \n veuillez entrer un caractère :") ;
+scanf("%d",&menu);
+switch (menu) {
+case 1 :    seule_compte() ;
+break;
+case 2 :    multible_compte () ;
+break;
+case 3 :printf("\n ~~~~~~~~~~~~~~ Opérations ~~~~~~~~~~~~~~");
+        printf("\n1 ~~~~~~~~ Retrait");
+        printf("\n2 ~~~~~~~~ Dépôt ");
+        printf("\n entrer votre choix :");
+        scanf("%d",&choix);
+                if (choix==1){
+                    printf("~~~~~~~~~~~~ Retrait ~~~~~~~~~~~~");
+                    retrait();
+                    }
+                else if(choix==2){
+                    printf("~~~~~~~~~~~~~ dépôt ~~~~~~~~~~~~~");
+                    depot();
+                    }
+                else
+                    printf("le caractère entrer est incorrect");
+break;
+
+case 4 : printf("1 : Par Ordre Ascendant\n");
+         printf("2 : Par Ordre Descendant\n");
+         printf("3 : Recherche par CIN\n");
+         scanf("%d",&choisir);
+        if (choisir == 1)
+            ascendant();
+        if (choisir == 2)
+            descendant();
+        if(choisir == 3)
+            search();
+break;
+default : ;
+break;
+}
+}while(menu>0 && menu < 5);
+    return 0;
+}     
