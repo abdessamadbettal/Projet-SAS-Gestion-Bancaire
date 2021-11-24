@@ -31,16 +31,16 @@ void multible_compte (){
 }
 void depot(){
     char cin[10];
-    int i , j, mtn;
+    int i , j, montant;
     printf("\n entrer votre cin :");
     scanf("%s",cin);
     printf("\n entrer le montant a deposer :");
-    scanf("%d",&mtn);
+    scanf("%d",&montant);
 
     for( i=0;i<10;i++)
     {
         if(strcmp(clients[i].CIN,cin)==0){
-            clients[i].Montant = clients[i].Montant + mtn;
+            clients[i].Montant = clients[i].Montant + montant;
         printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
         break;
         }
@@ -92,7 +92,7 @@ void    ascendant()
     }
 }
 
-void    descendant()
+void  descendant()
 {
     int k,j ,i;
     Compte  c;
@@ -109,10 +109,10 @@ void    descendant()
     }
     j=0;
     for(i=0;i<10;i++)
-    {
+    { 
         if(clients[i].CIN[0] == 0 && clients[i + 1].CIN[0] == 0)
-            i++;
-        else if (clients[i].CIN[0])
+            i++; 
+        else 
             printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
     }
 }
@@ -171,9 +171,11 @@ case 3 :printf("\n ~~~~~~~~~~~~~~ Opérations ~~~~~~~~~~~~~~");
                     printf("le caractère entrer est incorrect");
 break;
 
-case 4 : printf("1 : Par Ordre Ascendant\n");
-         printf("2 : Par Ordre Descendant\n");
-         printf("3 : Recherche par CIN\n");
+case 4 : printf("1 ~~~~~~~~~~~~~ Par Ordre Ascendant\n");
+         printf("2 ~~~~~~~~~~~~~ Par Ordre Descendant\n");
+         printf("3 ~~~~~~~~~~~~~ Recherche par CIN\n");
+         printf(" veuillez choisir :\n");
+         
          scanf("%d",&choisir);
         if (choisir == 1)
             ascendant();
@@ -187,4 +189,4 @@ break;
 }
 }while(menu>0 && menu < 5);
     return 0;
-}     
+}      
