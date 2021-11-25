@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 typedef struct {
@@ -38,12 +39,12 @@ void depot(){
 
     for( z=0;z<10;z++)
     {
-        if(strcmp(clients[i].CIN,cin)==0){
+        if(strcmp(clients[z].CIN,cin)==0){
         printf("\n •le montant avant le dépôt ");
-        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
-            clients[i].Montant = clients[i].Montant + montant;
+        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[z].CIN,clients[z].Nom,clients[z].Prenom,clients[z].Montant);
+            clients[z].Montant = clients[z].Montant + montant;
         printf("\n •le montant après le dépôt ");
-        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[z].CIN,clients[z].Nom,clients[z].Prenom,clients[z].Montant);
         break;
         }
     }
@@ -60,12 +61,12 @@ void retrait(){
 
     for( z=0;z<10;z++)
     {
-        if(strcmp(clients[i].CIN,cin)==0){
+        if(strcmp(clients[z].CIN,cin)==0){
         printf("\n •le montant avant le retrait ");
-        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
-            clients[i].Montant = clients[i].Montant - montant;
+        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[z].CIN,clients[z].Nom,clients[z].Prenom,clients[z].Montant);
+            clients[z].Montant = clients[z].Montant - montant;
         printf("\n •le montant après le retrait ");
-        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[i].CIN,clients[i].Nom,clients[i].Prenom,clients[i].Montant);
+        printf("CIN: %s Nom: %s Prenom: %s Montant: %d DH\n",clients[z].CIN,clients[z].Nom,clients[z].Prenom,clients[z].Montant);
         break;
         }
     }
@@ -192,4 +193,4 @@ break;
 }
 }while(menu>0 && menu < 6);
     return 0;
-}  
+} 
